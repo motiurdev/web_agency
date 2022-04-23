@@ -5,19 +5,22 @@ import Contact from "./components/Pages/Contact/Contact";
 import Login from "./components/Pages/Login/Login";
 import Footer from "./components/Shared/Footer/Footer";
 import Register from "./components/Pages/Login/Register/Register";
+import AuthProvider from "./contexts/AuthProvider";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navigation></Navigation>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-      <Footer></Footer>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Navigation></Navigation>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <Footer></Footer>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

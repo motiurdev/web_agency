@@ -1,9 +1,11 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 import moduleName from "../../../images/logos/logo.png";
 import "./Navigation.css";
 const Navigation = () => {
+  const { user, logOut } = useAuth();
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -16,7 +18,13 @@ const Navigation = () => {
             <Nav className="ms-auto nav-menu">
               <NavLink to="/">Home</NavLink>
               <NavLink to="/contact">Contact</NavLink>
-              <NavLink to="/login">Login</NavLink>
+              {user.email ? (
+                <Button variant="dark" onClick={logOut}>
+                  Log out
+                </Button>
+              ) : (
+                <NavLink to="/login">Login</NavLink>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -1,12 +1,14 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import loginImg from "../../../images/agency_website_4x.png";
+import useAuth from "../../../hooks/useAuth";
 import googleLogo from "../../../images/icons/icons8-google-48.png";
 import loginImg2 from "../../../images/logos/logo.png";
 import "./Login.css";
 
 const Login = () => {
+  const { googleSignIn, user } = useAuth();
+  console.log(user);
   return (
     <div>
       <Container>
@@ -18,8 +20,8 @@ const Login = () => {
               className="bg-light roundedCircle m-4"
               alt=""
             />
-            <h4 className="mb-4">Login With</h4>
-            <Button variant="light" className="w-100">
+            <h4 className="mb-4">Login With {user.displayName}</h4>
+            <Button variant="light" className="w-100" onClick={googleSignIn}>
               <img src="" alt="" />
               <img
                 src={googleLogo}
