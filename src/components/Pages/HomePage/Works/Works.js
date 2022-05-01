@@ -15,12 +15,7 @@ const Works = () => {
         <h3 className="py-4 text-center text-white mb-4">
           Here are some of <span style={{ color: "#7ab259" }}>our works</span>
         </h3>
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
+        <Swiper spaceBetween={50} slidesPerView={3}>
           <SwiperSlide>
             <img src={carousel1} className="img-fluid" alt="" />
           </SwiperSlide>

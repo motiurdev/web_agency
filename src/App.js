@@ -6,6 +6,7 @@ import Login from "./components/Pages/Login/Login";
 import Footer from "./components/Shared/Footer/Footer";
 import Register from "./components/Pages/Login/Register/Register";
 import AuthProvider from "./contexts/AuthProvider";
+import ServiceDetail from "./components/Pages/HomePage/ServiceDetail/ServiceDetail";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/serviceDetail/:serviceId" element={<ServiceDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

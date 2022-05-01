@@ -1,62 +1,35 @@
-import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import serviceImg1 from "../../../../images/icons/service1.png";
-import serviceImg2 from "../../../../images/icons/service2.png";
-import serviceImg3 from "../../../../images/icons/service3.png";
+import React, { useEffect, useState } from "react";
+import { Container, Row } from "react-bootstrap";
+import Service from "../Service/Service";
 
 const Services = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/services")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
+
+  // service detail
+  const serviceDetail = (id) => {
+    console.log("id", id);
+  };
+
   return (
-    <div style={{ paddingBottom: "70px" }}>
-      <h2 className="text-center py-5">
-        Provide awesome <span style={{ color: "#7ab259" }}>services</span>
-      </h2>
+    <div style={{ padding: "70px 0", background: "#f7f7f7" }}>
       <Container>
+        <h2 className="text-center pb-4">
+          Provide awesome <span style={{ color: "#7ab259" }}>services</span>
+        </h2>
         <Row gap={4}>
-          <Col xs={12} md={4}>
-            <div className="text-center">
-              <img
-                height="100"
-                width="100"
-                src={serviceImg1}
-                alt="service_photo_1"
-              />
-              <h5 className="py-3">Web & Mobile design</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-                impedit ad est velit id inventore odio modi nesciunt a odit.
-              </p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>
-            <div className="text-center">
-              <img
-                height="100"
-                width="100"
-                src={serviceImg2}
-                alt="service_photo_1"
-              />
-              <h5 className="py-3">Web & Mobile design</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-                impedit ad est velit id inventore odio modi nesciunt a odit.
-              </p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>
-            <div className="text-center">
-              <img
-                height="100"
-                width="100"
-                src={serviceImg3}
-                alt="service_photo_1"
-              />
-              <h5 className="py-3">Web & Mobile design</h5>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-                impedit ad est velit id inventore odio modi nesciunt a odit.
-              </p>
-            </div>
-          </Col>
+          {services.map((service) => (
+            <Service
+              key={service._id}
+              service={service}
+              serviceDetail={serviceDetail}
+            ></Service>
+          ))}
         </Row>
       </Container>
     </div>

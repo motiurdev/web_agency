@@ -8,7 +8,6 @@ import "./Login.css";
 
 const Login = () => {
   const { googleSignIn, user } = useAuth();
-  console.log(user);
   return (
     <div>
       <Container>
